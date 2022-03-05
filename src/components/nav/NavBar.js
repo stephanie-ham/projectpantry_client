@@ -19,11 +19,11 @@ export const NavBar = () => {
                 Tags
             </li>
             {
-                (localStorage.getItem("lu_token") !== null) ?
+                (localStorage.getItem("pp_token") !== null) ?
                     <li className="nav-item">
                         <button className="nav-link fakeLink"
                             onClick={() => {
-                                localStorage.removeItem("lu_token")
+                                localStorage.removeItem("pp_token")
                                 history.push({ pathname: "/" })
                             }}
                         >Logout</button>

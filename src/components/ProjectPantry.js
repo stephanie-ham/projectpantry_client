@@ -8,7 +8,7 @@ import { Register } from "./auth/Register"
 export const ProjectPantry = () => (
     <>
         <Route render={() => {
-            if (localStorage.getItem("lu_token")) {
+            if (localStorage.getItem("pp_token")) {
                 return <>
                     <Route>
                         <NavBar />
