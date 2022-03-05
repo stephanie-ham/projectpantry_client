@@ -1,5 +1,5 @@
 import React from "react"
-import { Link } from "react-router-dom"
+import { Link, useHistory } from "react-router-dom"
 import "./NavBar.css"
 
 export const NavBar = () => {
@@ -7,13 +7,16 @@ export const NavBar = () => {
     return (
         <ul className="navbar">
             <li className="navbar__item">
-                Navigation link
+                Dashboard
             </li>
             <li className="navbar__item">
-                Navigation link
+                Stocked Foods
             </li>
             <li className="navbar__item">
-                Navigation link
+                Safe Foods
+            </li>
+            <li className="navbar__item">
+                Tags
             </li>
             {
                 (localStorage.getItem("lu_token") !== null) ?
