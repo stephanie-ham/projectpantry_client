@@ -5,7 +5,7 @@ import { NavBar } from "./nav/NavBar"
 import { Login } from "./auth/Login"
 import { Register } from "./auth/Register"
 
-export const LevelUp = () => (
+export const ProjectPantry = () => (
     <>
         <Route render={() => {
             if (localStorage.getItem("lu_token")) {
