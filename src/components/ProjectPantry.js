@@ -6,27 +6,27 @@ import { Login } from "./auth/Login"
 import { Register } from "./auth/Register"
 
 export const ProjectPantry = () => (
-    <>
-        <Route render={() => {
-            if (localStorage.getItem("pp_token")) {
-                return <>
-                    <Route>
-                        <NavBar />
-                        <ApplicationViews />
-                    </Route>
-                </>
-            } else {
-                return <Redirect to="/login" />
-            }
-        }} />
+  <>
+    <Route render={() => {
+      if (localStorage.getItem("pp_token")) {
+        return <>
+          <Route>
+            <NavBar />
+            <ApplicationViews />
+          </Route>
+        </>
+      } else {
+        return <Redirect to="/login" />
+      }
+    }} />
 
-        <Route path="/login">
-            <Login />
-        </Route>
+    <Route path="/login">
+      <Login />
+    </Route>
 
-        <Route path="/register">
-            <Register />
-        </Route>
+    <Route path="/register">
+      <Register />
+    </Route>
 
-    </>
+  </>
 )
