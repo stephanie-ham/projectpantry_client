@@ -1,20 +1,20 @@
 
 Table {
-    width: 80%;
-    margin: 5rem;
+    /* width: 80%; */
+    /* margin: 5rem; */
     border-radius: 3px;
-    padding: 1rem;
+    /* padding: 1rem; */
 }
 
 th {
     padding: .5rem 1.5rem;
-    color: rgb(176, 80, 152);
+    color: #AB79AF;
     font-size: small;
     font-weight: bolder;
 }
 
 tbody {
-    border: rgb(176, 80, 152) 2px solid;
+    border: #AB79AF 2px solid;
 }
 
 td {

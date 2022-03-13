@@ -8,7 +8,7 @@ import { TagList } from "./tag/TagList.js"
 
 export const ApplicationViews = () => {
   return <>
-    <main>
+    <main id="bootstrap-overrides">
       <TagProvider>
       <FoodProvider>
         <Route exact path="/foods">

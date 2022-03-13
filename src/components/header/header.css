@@ -1,6 +1,5 @@
 .header__container {
     width: 100%;
     text-align: center;
-    background-color: aliceblue;
-    padding: 2rem;
+    padding: 2rem 2rem .5rem 2rem;
 }
