@@ -6,7 +6,7 @@ export const TagProvider = (props) => {
   const [tags, setTags] = useState([]);
 
   const getTags = () => {
-    return fetch("http://localhost:8000/api/tags", {
+    return fetch(`http://localhost:8000/api/tags`, {
       headers: {
         Authorization: `Token ${localStorage.getItem("pp_token")}`,
       },
@@ -15,9 +15,25 @@ export const TagProvider = (props) => {
       .then(setTags);
   };
 
+  const createTag = (tag) => {
+    return fetch(`http://localhost:8000/api/tags`, {
+      method: "POST",
+      headers: {
+        Authorization: `Token ${localStorage.getItem("pp_token")}`,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(tag)
+    }).then((res) => res.json())
+      .then(getTags);
+  }
+
+
+
+
+
   return (
-    <TagContext.Provider value={{ tags, getTags }}>
+    <TagContext.Provider value={{ tags, getTags, createTag }}>
       {props.children}
     </TagContext.Provider>
-  )  
+  )
 }
