@@ -1,10 +1,10 @@
-@import url("https://fonts.googleapis.com/css?family=Comfortaa|Patua+One");
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Serif:ital@0;1&display=swap');
 /*Typography
 --------------------------------------------------------------*/
 
 body, button, input, select, textarea {
     color: #404040;
-    font-family: "Comfortaa", Arial, sans-serif;
+    font-family: "Noto Sans", Arial, sans-serif;
     font-size: 1rem;
     line-height: 1.5;
     padding: 0;
@@ -12,7 +12,7 @@ body, button, input, select, textarea {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: "Patua One", serif;
+    font-family: "Noto Serif", serif;
     letter-spacing: 2px;
 }
 
@@ -193,4 +193,9 @@ code {
 
 .icon-send:before {
 	content: "🔓";
+}
+
+
+.pp_badge {
+	background-color: #CAA1CD;
 }
