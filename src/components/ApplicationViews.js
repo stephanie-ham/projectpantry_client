@@ -3,18 +3,22 @@ import { Route } from "react-router-dom"
 
 import { FoodProvider } from "./food/FoodProvider.js"
 import { FoodList } from "./food/FoodList.js"
+import { TagProvider } from "./tag/TagProvider.js"
+import { TagList } from "./tag/TagList.js"
 
 export const ApplicationViews = () => {
   return <>
-    <main style={{
-      margin: "5rem 2rem"
-    }}>
-      <h1>Application views</h1>
+    <main>
+      <TagProvider>
       <FoodProvider>
         <Route exact path="/foods">
           <FoodList />
         </Route>
+        <Route exact path="/tags">
+          <TagList />
+        </Route>
       </FoodProvider>
+      </TagProvider>
     </main>
   </>
 }
