@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { TagContext } from "./TagProvider";
+import { TagForm } from "./TagForm";
 import { Header } from "../header/header";
 import Table from "react-bootstrap/Table";
 import Badge from "react-bootstrap/Badge";
@@ -18,11 +19,13 @@ export const TagList = (props) => {
       <Header
         header={'Tags'}
       />
-      <section className="body__container">
+      <TagForm />
+      <section className="body__container taglist__container">
         <Table className="tag__table">
           <thead>
             <tr>
               <th className="table__cell">Label</th>
+              <th className="table__cell">Count</th>
               <th className="table__cell">Edit</th>
             </tr>
           </thead>
@@ -38,7 +41,8 @@ export const TagList = (props) => {
                       {tag.label}
                     </Badge>{' '}
                   </td>
-                  <td className="table__cell buttons">Button</td>
+                  <td className="table__cell counter">XX</td>
+                  <td className="table__cell table__buttons">Button</td>
                 </tr>
               )
             })}
