@@ -1,0 +1,27 @@
+.form__container {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1.5rem 5rem;
+    width: 40%;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    /* box-shadow: 0px 0px 12px 2px rgba(91, 99, 102, 0.106); */
+  }
+  
+  .form__label {
+    font-size: smaller;
+    font-weight: 700;
+    color: #AB79AF;
+  }
+
+  .form__text {
+      font-style: italic;
+  }
+
+  .form__btn__container {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+  }
