@@ -19,6 +19,22 @@ tbody {
 
 td {
     padding: .4rem 1.5rem;
-    border-radius: 2px;
+    /* border-radius: 2px; */
     /* background-color: rgba(176, 80, 152, 0.041); */
+}
+
+.table__buttons {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.table__button {
+	border: none;
+	background-color: white;
+	margin: 0 .3rem
+}
+
+.table__button:hover {
+	opacity: 50%;
+	color: #AB79AF;
 }

@@ -3,15 +3,15 @@
 	border: none;
     border-radius: 26px;
 	font-family: "Noto Sans", Arial, sans-serif;
-	font-size: inherit;
+	font-size: .9rem;
 	color: white;
 	background-color: #f2b770; 
 	cursor: pointer;
-	padding: .4rem 2rem;
+	padding: .4rem 1.8rem;
 	display: inline-block;
 	margin: 30px 0 15px 0;
 	text-transform: uppercase;
-	letter-spacing: 1.5px;
+	letter-spacing: 1.2px;
 	font-weight: 500;
 	outline: none;
 	position: relative;
@@ -166,3 +166,8 @@
 #bootstrap-overrides .pp_badge {
 	background-color: #AB79AF;
 }
+
+/* #bootstrap-overrides .pp_switch:after {
+	background-color: #f2b770;
+} */
+

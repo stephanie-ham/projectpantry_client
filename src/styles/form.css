@@ -11,13 +11,19 @@
   }
   
   .form__label {
+    margin-top: 1rem;
+    width: 100%;
+    text-align: left;
     font-size: smaller;
     font-weight: 700;
     color: #AB79AF;
   }
 
   .form__text {
-      font-style: italic;
+    width: 100%;
+    text-align: left;
+    font-size: smaller;
+    font-style: italic;
   }
 
   .form__btn__container {
