@@ -1,5 +1,15 @@
 .header__container {
     width: 100%;
-    text-align: center;
     padding: 2rem 2rem .5rem 2rem;
+}
+
+.header__text {
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.header__btn__container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
