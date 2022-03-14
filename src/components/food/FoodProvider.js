@@ -29,6 +29,16 @@ export const FoodProvider = (props) => {
       .then(getFoods);
   }
 
+  const deleteFood = (foodId) => {
+    return fetch(`http://localhost:8000/api/foods/${foodId}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Token ${localStorage.getItem("pp_token")}`,
+      }
+    })
+    .then(getFoods);
+  }
+
   const getLocations = () => {
     return fetch(`http://localhost:8000/api/locations`, {
       headers: {
@@ -50,7 +60,7 @@ export const FoodProvider = (props) => {
   }
 
   return (
-    <FoodContext.Provider value={{ foods, getFoods, createFood, locations, getLocations, quantities, getQuantities }}>
+    <FoodContext.Provider value={{ foods, getFoods, createFood, deleteFood, locations, getLocations, quantities, getQuantities }}>
       {props.children}
     </FoodContext.Provider>
   )  

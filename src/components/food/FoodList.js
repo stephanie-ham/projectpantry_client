@@ -1,15 +1,24 @@
 import React, { useContext, useEffect } from "react";
+import { useHistory } from "react-router-dom"
 import { FoodContext } from "./FoodProvider";
 import { FoodForm } from "./FoodForm";
 import { Header } from "../header/header";
 import Table from "react-bootstrap/Table";
 import Form from "react-bootstrap/Form";
+import Badge from 'react-bootstrap/Badge';
+import Overlay from 'react-bootstrap/Overlay';
 import "./food.css"
 import "../../styles/table.css"
 
 
+import EditBtn from "../../images/edit-btn.png"
+import DeleteBtn from "../../images/delete-btn.png"
+
+
+
 export const FoodList = (props) => {
-  const { foods, getFoods } = useContext(FoodContext);
+  const history = useHistory();
+  const { foods, getFoods, deleteFood } = useContext(FoodContext);
 
   useEffect(() => {
     getFoods();
@@ -18,9 +27,12 @@ export const FoodList = (props) => {
   return (
     <>
       <Header
-        header={`Stocked Foods`}
+        header={'Stocked Foods'}
+        path={() => history.push(`/foods/new`)}
+        button={'Add Food'}
+        form={<FoodForm />}
+        param={props.form}
       />
-      <FoodForm />
       <section className="body__container center">
         <Table className="food__table">
           <thead>
@@ -41,8 +53,20 @@ export const FoodList = (props) => {
                     <Form>
                       <Form.Switch
                         type="switch"
-                        id="custom-switch"
+                        className="pp_switch"
+                        bg="override"
                       />
+                      {/* <div className="pp_switch">
+                        <input
+                          type="checkbox"
+                          id="switch"
+                          key={`safefood--${food.id}`}
+                          value={`safefood--${food.id}`}
+                          safefood={safefood}
+                          onChange={handleOnChange}
+                        />
+                        <label for="switch">Toggle</label>
+                      </div> */}
                     </Form>
                   </td>
                   <td className="table__cell name">
@@ -58,18 +82,33 @@ export const FoodList = (props) => {
                           className="food__tag tag"
                           key={`food-${food.id}_tag-${tag.id}`}
                         >
-                          {tag.label}
+                          <Badge
+                            pill
+                            className="pp_badge"
+                            bg="override">
+                            {tag.label}
+                          </Badge>{' '}
                         </div>
+
                       )
                     })}
                   </td>
                   <td className="table__cell quantity">
                     {food.quantity.title}
-                    
+
                     {/* high low out add_SL */}
                   </td>
-                  <td className="table__cell food-buttons">
-                    edit del
+                  <td className="table__cell table__buttons">
+                    <button
+                      className="table__button" >
+                      <img src={EditBtn} />
+                    </button>
+                    <button
+                      className="table__button"
+                      onClick={() => deleteFood(food.id)}
+                    >
+                      <img src={DeleteBtn} />
+                    </button>
                   </td>
                 </tr>
               )
