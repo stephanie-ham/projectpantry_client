@@ -4,6 +4,7 @@ import { ApplicationViews } from "./ApplicationViews"
 import { NavBar } from "./nav/NavBar"
 import { Login } from "./auth/Login"
 import { Register } from "./auth/Register"
+import { SafeFoodBanner } from "./safefood/SafeFoodBanner"
 import "./ProjectPantry.css"
 
 export const ProjectPantry = () => (
@@ -13,6 +14,7 @@ export const ProjectPantry = () => (
         return <>
           <Route>
             <NavBar />
+            <SafeFoodBanner />
             <ApplicationViews />
           </Route>
         </>
