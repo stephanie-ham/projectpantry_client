@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { TagContext } from "./TagProvider";
-import Form from 'react-bootstrap/Form'
+import Form from "react-bootstrap/Form";
 
 export const TagForm = () => {
   const history = useHistory();
@@ -46,7 +46,7 @@ export const TagForm = () => {
             value={currentTag.label}
             onChange={changeTagState}
           />
-          <Form.Text className="text-muted form__text">
+          <Form.Text className="form__text">
             Suggestions: level of effort, food category or meal type
           </Form.Text>
         </Form.Group>
