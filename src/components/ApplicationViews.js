@@ -14,8 +14,14 @@ export const ApplicationViews = () => {
         <Route exact path="/foods">
           <FoodList />
         </Route>
+        <Route exact path="/foods/new">
+          <FoodList form={true} />
+        </Route>
         <Route exact path="/tags">
           <TagList />
+        </Route>
+        <Route exact path="/tags/new">
+          <TagList form={true} />
         </Route>
       </FoodProvider>
       </TagProvider>

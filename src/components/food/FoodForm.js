@@ -110,7 +110,7 @@ export const FoodForm = () => {
           className="btn btn-primary"
           onClick={handleSubmit}
         >
-          Create Food
+          Add Food
         </button>
       </section>
     </section>
