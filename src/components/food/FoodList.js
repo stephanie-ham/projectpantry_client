@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { FoodContext } from "./FoodProvider";
+import { FoodForm } from "./FoodForm";
 import { Header } from "../header/header";
 import Table from "react-bootstrap/Table";
 import Form from "react-bootstrap/Form";
@@ -19,6 +20,7 @@ export const FoodList = (props) => {
       <Header
         header={`Stocked Foods`}
       />
+      <FoodForm />
       <section className="body__container center">
         <Table className="food__table">
           <thead>
@@ -62,8 +64,9 @@ export const FoodList = (props) => {
                     })}
                   </td>
                   <td className="table__cell quantity">
-                    {/* {food.quantity.title} */}
-                    high low out add_SL
+                    {food.quantity.title}
+                    
+                    {/* high low out add_SL */}
                   </td>
                   <td className="table__cell food-buttons">
                     edit del
