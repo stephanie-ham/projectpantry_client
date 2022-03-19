@@ -1,27 +1,33 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom"
 import { FoodContext } from "./FoodProvider";
 import { FoodForm } from "./FoodForm";
 import { Header } from "../header/header";
+// import { FoodTable } from "../table/FoodTable";
+
 import Table from "react-bootstrap/Table";
 import Form from "react-bootstrap/Form";
 import Badge from 'react-bootstrap/Badge';
-import Overlay from 'react-bootstrap/Overlay';
-import "./food.css"
-import "../../styles/table.css"
-
-
 import EditBtn from "../../images/edit-btn.png"
 import DeleteBtn from "../../images/delete-btn.png"
-
-
+import "../../styles/table.css"
 
 export const FoodList = (props) => {
   const history = useHistory();
-  const { foods, getFoods, deleteFood } = useContext(FoodContext);
+  const { foods, getFoods, getSafeFoods, safeFoods, deleteFood, addFoodToSafeList, removeFoodFromSafeList } = useContext(FoodContext);
+  // const [isSafe, setSafe] = useState(false);
+
+  const handleSafeFoodSwitch = (food) => {
+    if (!food.is_safe) {
+      addFoodToSafeList(food.id);
+    } else {
+      removeFoodFromSafeList(food.id);
+    }
+  }
 
   useEffect(() => {
-    getFoods();
+    getFoods()
+      .then(getSafeFoods())
   }, []);
 
   return (
@@ -53,20 +59,13 @@ export const FoodList = (props) => {
                     <Form>
                       <Form.Switch
                         type="switch"
-                        className="pp_switch"
                         bg="override"
+                        className="pp_switch"
+                        id={`food--${food.id}`}
+                        key={`food--${food.id}`}
+                        checked={food.is_safe}
+                        onChange={() => handleSafeFoodSwitch(food)}
                       />
-                      {/* <div className="pp_switch">
-                        <input
-                          type="checkbox"
-                          id="switch"
-                          key={`safefood--${food.id}`}
-                          value={`safefood--${food.id}`}
-                          safefood={safefood}
-                          onChange={handleOnChange}
-                        />
-                        <label for="switch">Toggle</label>
-                      </div> */}
                     </Form>
                   </td>
                   <td className="table__cell name">

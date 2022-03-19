@@ -4,8 +4,10 @@ export const FoodContext = React.createContext();
 
 export const FoodProvider = (props) => {
   const [foods, setFoods] = useState([]);
+  const [safeFoods, setSafeFoods] = useState([])
   const [locations, setLocations] = useState([]);
   const [quantities, setQuantities] = useState([]);
+
 
   const getFoods = () => {
     return fetch("http://localhost:8000/api/foods", {
@@ -16,6 +18,16 @@ export const FoodProvider = (props) => {
       .then((res) => res.json())
       .then(setFoods);
   };
+
+  const getSafeFoods = () => {
+    return fetch("http://localhost:8000/api/foods/filter_by_safefood", {
+      headers: {
+        Authorization: `Token ${localStorage.getItem("pp_token")}`,
+      },
+    })
+      .then((res) => res.json())
+      .then(setSafeFoods);
+  }
 
   const createFood = (food) => {
     return fetch(`http://localhost:8000/api/foods`, {
@@ -36,7 +48,7 @@ export const FoodProvider = (props) => {
         Authorization: `Token ${localStorage.getItem("pp_token")}`,
       }
     })
-    .then(getFoods);
+      .then(getFoods);
   }
 
   const getLocations = () => {
@@ -45,8 +57,8 @@ export const FoodProvider = (props) => {
         Authorization: `Token ${localStorage.getItem("pp_token")}`,
       },
     })
-    .then((res) => res.json())
-    .then(setLocations);
+      .then((res) => res.json())
+      .then(setLocations);
   }
 
   const getQuantities = () => {
@@ -55,13 +67,34 @@ export const FoodProvider = (props) => {
         Authorization: `Token ${localStorage.getItem("pp_token")}`,
       },
     })
-    .then((res) => res.json())
-    .then(setQuantities);
+      .then((res) => res.json())
+      .then(setQuantities);
+  }
+
+  const addFoodToSafeList = (foodId) => {
+    return fetch(`http://localhost:8000/api/foods/${foodId}/add_to_safelist`, {
+      method: "POST",
+      headers: {
+        Authorization: `Token ${localStorage.getItem("pp_token")}`,
+      },
+    })
+      .then((res) => res.json())
+      .then(getFoods);
+  }
+
+  const removeFoodFromSafeList = (foodId) => {
+    return fetch(`http://localhost:8000/api/foods/${foodId}/remove_from_safelist`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Token ${localStorage.getItem("pp_token")}`
+      }
+    })
+    .then(getFoods);  
   }
 
   return (
-    <FoodContext.Provider value={{ foods, getFoods, createFood, deleteFood, locations, getLocations, quantities, getQuantities }}>
+    <FoodContext.Provider value={{ foods, getFoods, safeFoods, getSafeFoods, createFood, deleteFood, locations, getLocations, quantities, getQuantities, addFoodToSafeList, removeFoodFromSafeList }}>
       {props.children}
     </FoodContext.Provider>
-  )  
+  )
 }
