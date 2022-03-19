@@ -1,20 +1,29 @@
 import React, { useContext, useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { FoodContext } from "./FoodProvider";
+import { TagContext } from "../tag/TagProvider"
 import Form from "react-bootstrap/Form";
 
 export const FoodForm = () => {
   const history = useHistory();
   const { createFood, getLocations, locations, getQuantities, quantities } = useContext(FoodContext);
+  const { tags, getTags, addTagToFood } = useContext(TagContext)
+
   const [currentFood, setCurrentFood] = useState({
     name: "",
     locationId: 0,
     quantityId: 0
   });
 
+  const [currentTag, setCurrentTag] = useState({
+    tag: 0,
+    foodId: 0
+  })
+
   useEffect(() => {
     getLocations()
-      .then(getQuantities());
+      .then(getQuantities())
+      .then(getTags());
   }, []);
 
   const changeFoodState = (evt) => {
@@ -22,6 +31,13 @@ export const FoodForm = () => {
     newFoodState[evt.target.name] = evt.target.value
     setCurrentFood(newFoodState)
   }
+
+  const changeTagState = (evt) => {
+    const newTagState = { ...currentTag }
+    newTagState[evt.target.name] = evt.target.value
+    setCurrentTag(newTagState)
+  }
+
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -32,15 +48,25 @@ export const FoodForm = () => {
       quantityId: parseInt(currentFood.quantityId)
     };
 
+    const tag = {
+      tag: parseInt(currentTag.tagId),
+      foodId: parseInt(currentFood.foodId)
+    }
+
     createFood(food)
+    .then(addTagToFood(tag))
       .then(() => history.push("/foods"))
       .then(setCurrentFood({
         name: "",
         locationId: 0,
         quantityId: 0
+      }))
+      .then(setCurrentTag({
+        tag: 0,
+        foodId: 0
       }));
   }
-  
+
   return (
     <section className="form__container">
       <Form>
@@ -99,6 +125,27 @@ export const FoodForm = () => {
             {quantities.map((q) => (
               <option value={q.id} key={q.id}>
                 {q.title}
+              </option>
+            ))}
+          </Form.Select>
+        </Form.Group>
+        <Form.Group>
+          <Form.Label
+            className="form__label">
+            Tags
+          </Form.Label>
+          <Form.Select
+            aria-label="Default select example"
+            name="tagId"
+            required
+            className="form__select"
+            defaultValue={currentTag.id}
+            onChange={changeTagState}
+          >
+            <option value="0">Select a Tag</option>
+            {tags.map((t) => (
+              <option value={t.id} key={t.id}>
+                {t.label}
               </option>
             ))}
           </Form.Select>
