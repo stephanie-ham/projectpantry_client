@@ -1,13 +1,14 @@
-import React, { useContext, useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { useHistory, useParams } from "react-router-dom";
 import { TagContext } from "./TagProvider";
 import Form from "react-bootstrap/Form";
 
-export const TagForm = () => {
+export const TagForm = (props) => {
   const history = useHistory();
-  const { createTag } = useContext(TagContext);
+  const { createTag, editTag } = useContext(TagContext);
+  const { tagId } = useParams();
 
-  const [currentTag, setCurrentTag] = useState({ label: "" });
+  const [currentTag, setCurrentTag] = useState({});
 
   const changeTagState = (evt) => {
     const newTagState = { ...currentTag }
@@ -20,13 +21,24 @@ export const TagForm = () => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
 
+    const updatedTag = {
+      id: parseInt(tagId),
+      label: currentTag.label
+    }
+
     const tag = {
       label: currentTag.label
     };
 
-    createTag(tag)
-      .then(() => history.push("/tags"))
-      .then(setCurrentTag({ label: "" }));
+    if (tagId) {
+      editTag(updatedTag)
+        .then(() => history.push("/tags"))
+        .then(setCurrentTag({}));
+    } else {
+      createTag(tag)
+        .then(() => history.push("/tags"))
+        .then(setCurrentTag({}));
+    }
   };
 
   return (
@@ -39,7 +51,7 @@ export const TagForm = () => {
             Tag Label
           </Form.Label>
           <Form.Control
-            placeholder="Enter Tag Label"
+            placeholder={tagId ? "Update Tag Label" : "Enter Tag Label"}
             type="text"
             name="label"
             required
@@ -56,7 +68,7 @@ export const TagForm = () => {
             className="btn btn-primary"
             onClick={handleSubmit}
           >
-            Create Tag
+            {tagId ? "Update Tag" : "Create Tag"}
           </button>
         </section>
       </Form>

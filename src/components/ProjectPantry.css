@@ -42,8 +42,35 @@
   margin-right: 5rem;
   margin-top: 4rem;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   padding: 2rem;
+  /* background-color: white; */
+  border-radius: 10px;
+  /* width:100%; */
+}
+
+.body__container__tag {
+  margin-left: 20rem;
+  margin-right: 20rem;
+  margin-top: 4rem;
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+  /* background-color: white; */
+  border-radius: 10px;
+}
+
+.filter__container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.table__container {
+  width: 100%;
   background-color: white;
+  padding: .6rem;
   border-radius: 10px;
 }
