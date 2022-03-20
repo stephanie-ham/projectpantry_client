@@ -71,6 +71,26 @@ export const FoodProvider = (props) => {
       .then(setQuantities);
   }
 
+  const filterByQuantity = (quantityId) => {
+    return fetch(`http://localhost:8000/api/foods?quantity_id=${quantityId}`, {
+      headers: {
+        Authorization: `Token ${localStorage.getItem("pp_token")}`,
+      },
+    })
+      .then((res) => res.json())
+      .then(setFoods);
+  };
+
+  const filterByTag = (tagId) => {
+    return fetch(`http://localhost:8000/api/foods?tag=${tagId}`, {
+      headers: {
+        Authorization: `Token ${localStorage.getItem("pp_token")}`,
+      },
+    })
+      .then((res) => res.json())
+      .then(setFoods);
+  };
+
   const addFoodToSafeList = (foodId) => {
     return fetch(`http://localhost:8000/api/foods/${foodId}/add_to_safelist`, {
       method: "POST",
@@ -93,7 +113,7 @@ export const FoodProvider = (props) => {
   }
 
   return (
-    <FoodContext.Provider value={{ foods, getFoods, safeFoods, getSafeFoods, createFood, deleteFood, locations, getLocations, quantities, getQuantities, addFoodToSafeList, removeFoodFromSafeList }}>
+    <FoodContext.Provider value={{ foods, getFoods, safeFoods, getSafeFoods, createFood, deleteFood, locations, getLocations, quantities, getQuantities, addFoodToSafeList, removeFoodFromSafeList, filterByQuantity, filterByTag }}>
       {props.children}
     </FoodContext.Provider>
   )
