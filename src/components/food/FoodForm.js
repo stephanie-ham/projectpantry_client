@@ -1,13 +1,14 @@
 import React, { useContext, useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { FoodContext } from "./FoodProvider";
 import { TagContext } from "../tag/TagProvider"
 import Form from "react-bootstrap/Form";
 
-export const FoodForm = () => {
+export const FoodForm = (props) => {
   const history = useHistory();
-  const { createFood, getLocations, locations, getQuantities, quantities } = useContext(FoodContext);
+  const { createFood, getLocations, locations, getQuantities, quantities, getFoods, foods, updateFood } = useContext(FoodContext);
   const { tags, getTags } = useContext(TagContext)
+  const { foodId } = useParams();
 
   const [currentFood, setCurrentFood] = useState({
     name: "",
@@ -17,7 +18,8 @@ export const FoodForm = () => {
   });
 
   useEffect(() => {
-    getLocations()
+    getFoods()
+      .then(getLocations())
       .then(getQuantities())
       .then(getTags());
   }, []);
@@ -34,8 +36,25 @@ export const FoodForm = () => {
     setCurrentFood(newTagState)
   }
 
+  const findFood = (foodId) => {
+    let foodName 
+    foods.map(food => {
+      if (food.id === parseInt(foodId)) {
+        foodName = food.name
+      }
+    })
+    return foodName
+  }
+
   const handleSubmit = (evt) => {
     evt.preventDefault();
+
+    const updatedFood = {
+      id: parseInt(foodId),
+      name: currentFood.name,
+      locationId: parseInt(currentFood.locationId),
+      quantityId: parseInt(currentFood.quantityId)
+    }
 
     const food = {
       name: currentFood.name,
@@ -44,14 +63,26 @@ export const FoodForm = () => {
       tags: currentFood.tags
     };
 
-    createFood(food)
-      .then(() => history.push("/foods"))
-      .then(setCurrentFood({
-        name: "",
-        locationId: 0,
-        quantityId: 0,
-        tags: []
-      }))
+    if (foodId) {
+      updateFood(updatedFood)
+        .then(() => history.push("/foods"))
+        .then(setCurrentFood({
+          name: "",
+          locationId: 0,
+          quantityId: 0,
+          tags: []
+        }))
+
+    } else {
+      createFood(food)
+        .then(() => history.push("/foods"))
+        .then(setCurrentFood({
+          name: "",
+          locationId: 0,
+          quantityId: 0,
+          tags: []
+        }))
+    }
   }
 
   return (
@@ -66,7 +97,7 @@ export const FoodForm = () => {
             Food Name
           </Form.Label>
           <Form.Control
-            placeholder="Enter food name"
+            placeholder={foodId ? `Update ${findFood(foodId) }` : "Enter Food Name"}
             type="text"
             name="name"
             required
@@ -87,7 +118,7 @@ export const FoodForm = () => {
             defaultValue={currentFood.locationId}
             onChange={changeFoodState}
           >
-            <option value="0">Select a location</option>
+            <option value="0">{foodId ? "Update Storage Location" : "Select Storage Location"}</option>
             {locations.map((l) => (
               <option value={l.id} key={l.id}>
                 {l.title}
@@ -108,7 +139,7 @@ export const FoodForm = () => {
             defaultValue={currentFood.quantityId}
             onChange={changeFoodState}
           >
-            <option value="0">Select a quantity</option>
+            <option value="0">{foodId ? "Update Quantity" : "Select Quantity"}</option>
             {quantities.map((q) => (
               <option value={q.id} key={q.id}>
                 {q.title}
@@ -144,7 +175,7 @@ export const FoodForm = () => {
           className="btn btn-primary"
           onClick={handleSubmit}
         >
-          Add Food
+          {foodId ? "Update Food" : "Add Food"}
         </button>
       </section>
     </section>
