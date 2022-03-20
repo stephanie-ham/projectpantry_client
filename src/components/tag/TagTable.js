@@ -22,13 +22,12 @@ export const TagTable = (props) => {
 
   return (
     <>
-      <section className="body__container taglist__container">
+      <section className="body__container__tag taglist__container">
         <Table className="tag__table">
           <thead>
             <tr>
               <th className="table__cell">Label</th>
-              <th className="table__cell">Count</th>
-              <th className="table__cell">Edit</th>
+              {/* <th className="table__cell">Count</th> */}
             </tr>
           </thead>
           <tbody>
@@ -43,26 +42,22 @@ export const TagTable = (props) => {
                       {tag.label}
                     </Badge>{' '}
                   </td>
-                  <td className="table__cell counter">XX</td>
-                  <td className="table__cell table__buttons">
-
-                    <div ref={ref}>
-                      <button
-                        className="table__button"
-                        tagId={tag.id}
-                        onClick={e => history.push(`/tags/${tag.id}/edit`)}>
-                        <img src={EditBtn} />
-                      </button>
-                      <section className="form__btn__container">
-                      </section>
-                    </div>
+                  {/* <td className="table__cell counter">XX</td> */}
+                  <div className="table__buttons right__align">
+                    <button
+                      className="table__button" 
+                      tagId={tag.id}
+                      onClick={() => history.push(`/tags/${tag.id}/edit`)}
+                      >
+                      <img src={EditBtn} />
+                    </button>
                     <button
                       className="table__button"
                       onClick={() => deleteTag(tag.id)}
                     >
                       <img src={DeleteBtn} />
                     </button>
-                  </td>
+                  </div>
                 </tr>
               )
             })}

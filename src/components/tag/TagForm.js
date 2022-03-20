@@ -3,7 +3,7 @@ import { useHistory, useParams } from "react-router-dom";
 import { TagContext } from "./TagProvider";
 import Form from "react-bootstrap/Form";
 
-export const TagForm = () => {
+export const TagForm = (props) => {
   const history = useHistory();
   const { createTag, editTag } = useContext(TagContext);
   const { tagId } = useParams();
@@ -51,7 +51,7 @@ export const TagForm = () => {
             Tag Label
           </Form.Label>
           <Form.Control
-            placeholder="Enter Tag Label"
+            placeholder={tagId ? "Update Tag Label" : "Enter Tag Label"}
             type="text"
             name="label"
             required

@@ -20,7 +20,10 @@ export const TagList = (props) => {
         header={'Tags'}
         path={() => history.push(`/tags/new`)}
         button={'Create Tag'}
-        form={<TagForm />}
+        form={
+        <TagForm />
+      
+        }
         param={props.form}
       />
 
