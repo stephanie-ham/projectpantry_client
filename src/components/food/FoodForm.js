@@ -7,18 +7,14 @@ import Form from "react-bootstrap/Form";
 export const FoodForm = () => {
   const history = useHistory();
   const { createFood, getLocations, locations, getQuantities, quantities } = useContext(FoodContext);
-  const { tags, getTags, addTagToFood } = useContext(TagContext)
+  const { tags, getTags } = useContext(TagContext)
 
   const [currentFood, setCurrentFood] = useState({
     name: "",
     locationId: 0,
-    quantityId: 0
+    quantityId: 0,
+    tags: []
   });
-
-  const [currentTag, setCurrentTag] = useState({
-    tag: 0,
-    foodId: 0
-  })
 
   useEffect(() => {
     getLocations()
@@ -33,11 +29,10 @@ export const FoodForm = () => {
   }
 
   const changeTagState = (evt) => {
-    const newTagState = { ...currentTag }
-    newTagState[evt.target.name] = evt.target.value
-    setCurrentTag(newTagState)
+    const newTagState = { ...currentFood }
+    newTagState.tags.push(evt.target.value)
+    setCurrentFood(newTagState)
   }
-
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -45,26 +40,18 @@ export const FoodForm = () => {
     const food = {
       name: currentFood.name,
       locationId: parseInt(currentFood.locationId),
-      quantityId: parseInt(currentFood.quantityId)
+      quantityId: parseInt(currentFood.quantityId),
+      tags: currentFood.tags
     };
 
-    const tag = {
-      tag: parseInt(currentTag.tagId),
-      foodId: parseInt(currentFood.foodId)
-    }
-
     createFood(food)
-    .then(addTagToFood(tag))
       .then(() => history.push("/foods"))
       .then(setCurrentFood({
         name: "",
         locationId: 0,
-        quantityId: 0
+        quantityId: 0,
+        tags: []
       }))
-      .then(setCurrentTag({
-        tag: 0,
-        foodId: 0
-      }));
   }
 
   return (
@@ -139,7 +126,7 @@ export const FoodForm = () => {
             name="tagId"
             required
             className="form__select"
-            defaultValue={currentTag.id}
+            defaultValue={tags[0]?.id}
             onChange={changeTagState}
           >
             <option value="0">Select a Tag</option>
