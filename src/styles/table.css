@@ -26,15 +26,44 @@ td {
 .table__buttons {
     display: flex;
     flex-wrap: wrap;
+    justify-content: end;
 }
 
 .table__button {
-	border: none;
+	border: 1px solid #00000033;
+    border-radius: 5px;
 	background-color: white;
-	margin: 0 .3rem
+	margin: 0 .3rem;
+    color:#000000;
+    font-size: small;
+    padding: .3rem .5rem;
 }
 
 .table__button:hover {
 	opacity: 50%;
-	color: #AB79AF;
+	/* color: #AB79AF; */
+}
+
+.food__table {
+    background-color: white;
+}
+
+.food-tags.table__cell {
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 1rem;
+}
+
+.food__tag {
+    flex-wrap: wrap;
+    margin-right: .3rem;
+}
+
+thead.table__header {
+    border-bottom: 1.5px solid #AB79AF;
+
+}
+
+tbody tr {
+    border-bottom: 1px solid #00000033;
 }

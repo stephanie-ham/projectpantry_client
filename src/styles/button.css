@@ -160,14 +160,22 @@
 	width: 60px;
 }
 
-
 /* badge override settings */
 
 #bootstrap-overrides .pp_badge {
 	background-color: #AB79AF;
 }
 
-/* #bootstrap-overrides .pp_switch:after {
-	background-color: #f2b770;
-} */
+#custom-switch:checked {
+	background-color: #AB79AF;
+	border: #f2b770;
+}
 
+#bg-nested-dropdown {
+	background-color: rgba(255, 255, 255, 0);
+	border: 2px #AB79AF solid;
+	color: #AB79AF;
+    padding: .3rem 1.5rem;
+    border-radius: 26px;
+    font-size: 85%;
+}
