@@ -164,6 +164,13 @@
 
 #bootstrap-overrides .pp_badge {
 	background-color: #AB79AF;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	padding: 0 10px;
+	font-size: 12px;
+	font-weight: 300;
 }
 
 #custom-switch:checked {
@@ -179,3 +186,9 @@
     border-radius: 26px;
     font-size: 85%;
 }
+
+#delete-tag {
+	width: 1px;
+	margin-left: .6rem;
+}
+

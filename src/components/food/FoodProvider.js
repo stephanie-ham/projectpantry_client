@@ -41,6 +41,21 @@ export const FoodProvider = (props) => {
       .then(getFoods);
   }
 
+  const updateFood = (food) => {
+    return fetch(`http://localhost:8000/api/foods/${food.id}`, {
+      method: "PUT",
+      headers: {
+        Authorization: `Token ${localStorage.getItem("pp_token")}`,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(food)
+    })
+    .then((res) => {
+      getFoods();
+      return res
+    });
+  }
+
   const deleteFood = (foodId) => {
     return fetch(`http://localhost:8000/api/foods/${foodId}`, {
       method: "DELETE",
@@ -112,8 +127,23 @@ export const FoodProvider = (props) => {
     .then(getFoods);  
   }
 
+  const removeTagFromFood = (tag) => {
+    return fetch(`http://localhost:8000/api/tags/${tag.tag}/remove_from_food`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Token ${localStorage.getItem("pp_token")}`,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(tag)
+    })
+      .then((res) => {
+        getFoods();
+        return res
+      });
+  }
+
   return (
-    <FoodContext.Provider value={{ foods, getFoods, safeFoods, getSafeFoods, createFood, deleteFood, locations, getLocations, quantities, getQuantities, addFoodToSafeList, removeFoodFromSafeList, filterByQuantity, filterByTag }}>
+    <FoodContext.Provider value={{ foods, getFoods, safeFoods, getSafeFoods, createFood, deleteFood, locations, getLocations, quantities, getQuantities, addFoodToSafeList, removeFoodFromSafeList, filterByQuantity, filterByTag, updateFood, removeTagFromFood }}>
       {props.children}
     </FoodContext.Provider>
   )

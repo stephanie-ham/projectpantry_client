@@ -72,6 +72,6 @@ export const TagForm = (props) => {
           </button>
         </section>
       </Form>
-    </section >
+    </ section>
   )
 }

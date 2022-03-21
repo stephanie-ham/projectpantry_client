@@ -1,24 +1,24 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useHistory } from "react-router-dom"
+import { useHistory, useParams } from "react-router-dom"
 import { FoodContext } from "./FoodProvider";
-import { FoodForm } from "./FoodForm";
+import { FoodCreateForm } from "./FoodCreate";
+import { FoodEditForm } from "./FoodEdit";
+import { FoodFilter } from "./FoodFilter";
+import { FoodTag } from "./FoodTag"
 import { Header } from "../header/header";
-// import { FoodTable } from "../table/FoodTable";
-import ButtonGroup from "react-bootstrap/ButtonGroup";
-import DropdownButton from "react-bootstrap/DropdownButton";
-import Dropdown from "react-bootstrap/Dropdown";
+
 import Table from "react-bootstrap/Table";
 import Form from "react-bootstrap/Form";
-import Badge from 'react-bootstrap/Badge';
+
 import EditBtn from "../../images/edit-btn.png"
 import DeleteBtn from "../../images/delete-btn.png"
 import "../../styles/table.css"
-import { FoodFilter } from "./FoodFilter";
+
 
 export const FoodList = (props) => {
   const history = useHistory();
-  const { foods, getFoods, getSafeFoods, safeFoods, deleteFood, addFoodToSafeList, removeFoodFromSafeList } = useContext(FoodContext);
-  // const [isSafe, setSafe] = useState(false);
+  const { foods, getFoods, deleteFood, getSafeFoods,  addFoodToSafeList, removeFoodFromSafeList } = useContext(FoodContext);
+  const { foodId } = useParams();
 
   const handleSafeFoodSwitch = (food) => {
     if (!food.is_safe) {
@@ -39,7 +39,7 @@ export const FoodList = (props) => {
         header={'Stocked Foods'}
         path={() => history.push(`/foods/new`)}
         button={'Add Food'}
-        form={<FoodForm />}
+        form={foodId ? <FoodEditForm /> : <FoodCreateForm />}
         param={props.form}
       />
 
@@ -86,18 +86,10 @@ export const FoodList = (props) => {
                     <td className="table__cell food-tags">
                       {food.tags.map((tag) => {
                         return (
-                          <div
-                            className="food__tag tag"
-                            key={`food-${food.id}_tag-${tag.id}`}
-                          >
-                            <Badge
-                              pill
-                              className="pp_badge"
-                              bg="override">
-                              {tag.label}
-                            </Badge>{' '}
-                          </div>
-
+                          <FoodTag
+                            tag={tag}
+                            food={food}
+                          />
                         )
                       })}
                     </td>
@@ -108,7 +100,9 @@ export const FoodList = (props) => {
                     </td>
                     <td className="table__buttons right__align">
                       <button
-                        className="table__button edit" >
+                        className="table__button edit"
+                        foodId={food.id}
+                        onClick={() => history.push(`/foods/${food.id}/edit`)}>
                         <img src={EditBtn} /> Edit
                       </button>
                       <button
