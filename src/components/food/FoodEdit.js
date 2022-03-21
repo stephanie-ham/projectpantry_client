@@ -43,15 +43,24 @@ export const FoodEditForm = (props) => {
     setCurrentFood(newFoodState)
   }
 
+  /* ---- MULTIPLE SELECT: WORKING ----- */
   const changeTagState = (evt) => {
-    const newTagState = { ...currentFood }
-    const selectedOptions = Array.from(evt.target.options)
-      .filter(option => option.selected)
-      .map(option => option.value)
 
-    newTagState.tags = selectedOptions
+    const newTagState = { ...currentFood }
+
+    const tagArray = Array.from(evt.target.selected)
+      .map(v => v.id.toString())
+      .push(evt.target.options)
+      
+    newTagState[evt.target.name] = Array.from(evt.target.options)
+      .filter(o => o.selected)
+      .map(o => o.value)
+      
+    console.log(newTagState)
+
     setCurrentFood(newTagState)
   }
+   /* ---- END MULTIPLE SELECT: WORKING ----- */
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -61,7 +70,7 @@ export const FoodEditForm = (props) => {
       name: currentFood.name,
       locationId: parseInt(currentFood.locationId),
       quantityId: parseInt(currentFood.quantityId),
-      tags: currentFood.tags
+      tags: currentFood.tagId
     }
 
     updateFood(updatedFood)
@@ -86,8 +95,9 @@ export const FoodEditForm = (props) => {
       quantities={quantities}
       quantityValue={currentFood.quantityId}
       tags={tags}
-      tagsValue={currentFood.tags}
-      tagsOnChange={() => changeTagState}
+      tagValue={tags.tagId}
+      tagsOnChange={changeTagState}
+      selectedValues={foundFood.tags}
     />
   )
 }

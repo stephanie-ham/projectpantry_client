@@ -87,6 +87,7 @@ export const FoodForm = (props) => {
             value={props.tagValue}
             onChange={props.tagsOnChange}
             options={props.tags}
+            selected={props.selectedValues}
           >
             {props.tags.map((t) => (
               <option value={t.id} key={t.id}>
