@@ -19,7 +19,8 @@ export const TagProvider = (props) => {
     return fetch(`http://localhost:8000/api/tags/${tagId}`, {
       headers: {
         Authorization: `Token ${localStorage.getItem("pp_token")}`,
-      }})
+      }
+    })
       .then((res) => res.json())
   }
 
@@ -41,9 +42,9 @@ export const TagProvider = (props) => {
       headers: {
         Authorization: `Token ${localStorage.getItem("pp_token")}`,
       },
-      })
+    })
       .then(getTags);
-    };
+  };
 
   const editTag = (tag) => {
     return fetch(`http://localhost:8000/api/tags/${tag.id}`, {
@@ -54,12 +55,12 @@ export const TagProvider = (props) => {
       },
       body: JSON.stringify(tag)
     })
-    .then((res) => {
-      getTags();
-      return res
-    });
+      .then((res) => {
+        getTags();
+        return res
+      });
   }
-  
+
   const addTagToFood = (foodTag) => {
     return fetch(`http://localhost:8000/api/tags/${foodTag.tag}/add_to_food`, {
       method: "POST",
@@ -69,7 +70,7 @@ export const TagProvider = (props) => {
       },
       body: JSON.stringify(foodTag)
     }).then((res) => res.json())
-    .then(getTags);
+      .then(getTags);
   }
 
   return (

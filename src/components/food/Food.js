@@ -69,13 +69,15 @@ export const FoodForm = (props) => {
             className="form__label">
             Tags
           </Form.Label>
-          <Form.Select
+          <select
             aria-label="Default select example"
             name="tagId"
             required
             className="form__select"
-            defaultValue={props.tagsValue}
+            // defaultValue={props.tagsValue}
             onChange={props.tagsOnChange}
+            multiple={true}
+            value={props.tagsValue}
           >
             <option value="0">Select a Tag</option>
             {props.tags.map((t) => (
@@ -83,7 +85,7 @@ export const FoodForm = (props) => {
                 {t.label}
               </option>
             ))}
-          </Form.Select>
+          </select>
         </Form.Group>
       </Form>
       <section className="form__btn__container">

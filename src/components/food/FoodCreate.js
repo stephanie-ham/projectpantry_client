@@ -31,8 +31,14 @@ export const FoodCreateForm = (props) => {
 
   const changeTagState = (evt) => {
     const newTagState = { ...currentFood }
-    newTagState.tags.push(evt.target.value)
+    const selectedOptions = Array.from(evt.target.options)
+      .filter(option => option.selected)
+      .map(option => option.value)
+
+    newTagState.tags = selectedOptions
     setCurrentFood(newTagState)
+
+    console.log(selectedOptions)
   }
 
   const handleSubmit = (evt) => {
@@ -67,7 +73,7 @@ export const FoodCreateForm = (props) => {
       quantities={quantities}
       quantityValue={currentFood.quantityId}
       tags={tags}
-      tagsValue={tags[0]?.id}
+      tagsValue={currentFood.tags}
       tagsOnChange={changeTagState}
     />
   )

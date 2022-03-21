@@ -27,6 +27,7 @@ export const FoodEditForm = (props) => {
     locationId: parseInt(foundFood.location.id),
     quantityId: parseInt(foundFood.quantity.id),
     tags: foundFood.tags
+    // tags: foundFood.tags
   })
 
   useEffect(() => {
@@ -44,7 +45,11 @@ export const FoodEditForm = (props) => {
 
   const changeTagState = (evt) => {
     const newTagState = { ...currentFood }
-    newTagState.tags.push(evt.target.value)
+    const selectedOptions = Array.from(evt.target.options)
+      .filter(option => option.selected)
+      .map(option => option.value)
+
+    newTagState.tags = selectedOptions
     setCurrentFood(newTagState)
   }
 
@@ -81,7 +86,7 @@ export const FoodEditForm = (props) => {
       quantities={quantities}
       quantityValue={currentFood.quantityId}
       tags={tags}
-      tagsValue={currentFood.tags[0]?.id}
+      tagsValue={currentFood.tags}
       tagsOnChange={() => changeTagState}
     />
   )
