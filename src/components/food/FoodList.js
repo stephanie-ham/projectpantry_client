@@ -1,14 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useHistory } from "react-router-dom"
+import { useHistory, useParams } from "react-router-dom"
 import { FoodContext } from "./FoodProvider";
+import { FoodCreateForm } from "./FoodCreate";
+import { FoodEditForm } from "./FoodEdit";
 import { FoodFilter } from "./FoodFilter";
-import { FoodForm } from "./FoodForm";
 import { FoodTag } from "./FoodTag"
 import { Header } from "../header/header";
-// import { FoodTable } from "../table/FoodTable";
-import ButtonGroup from "react-bootstrap/ButtonGroup";
-import DropdownButton from "react-bootstrap/DropdownButton";
-import Dropdown from "react-bootstrap/Dropdown";
 
 import Table from "react-bootstrap/Table";
 import Form from "react-bootstrap/Form";
@@ -20,8 +17,8 @@ import "../../styles/table.css"
 
 export const FoodList = (props) => {
   const history = useHistory();
-  const { foods, getFoods, getSafeFoods, safeFoods, deleteFood, addFoodToSafeList, removeFoodFromSafeList } = useContext(FoodContext);
-  // const [isSafe, setSafe] = useState(false);
+  const { foods, getFoods, deleteFood, getSafeFoods,  addFoodToSafeList, removeFoodFromSafeList } = useContext(FoodContext);
+  const { foodId } = useParams();
 
   const handleSafeFoodSwitch = (food) => {
     if (!food.is_safe) {
@@ -42,7 +39,7 @@ export const FoodList = (props) => {
         header={'Stocked Foods'}
         path={() => history.push(`/foods/new`)}
         button={'Add Food'}
-        form={<FoodForm />}
+        form={foodId ? <FoodEditForm /> : <FoodCreateForm />}
         param={props.form}
       />
 
