@@ -40,7 +40,6 @@
 .body__container {
   margin-left: 5rem;
   margin-right: 5rem;
-  margin-top: 4rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -53,7 +52,6 @@
 .body__container__tag {
   margin-left: 20rem;
   margin-right: 20rem;
-  margin-top: 4rem;
   display: flex;
   justify-content: center;
   padding: 2rem;
@@ -66,13 +64,20 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  margin-top: 0;
+  margin-bottom: 2rem;
+  padding-top: 0;
 }
 
 .table__container {
   width: 100%;
   background-color: white;
-  padding: .6rem;
+  padding: 0 2rem 1rem 2rem;
   border-radius: 10px;
+}
+
+.tag__table {
+  padding-top: 1rem;
 }
 
 

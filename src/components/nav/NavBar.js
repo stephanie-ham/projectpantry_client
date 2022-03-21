@@ -7,7 +7,7 @@ export const NavBar = () => {
   return (
     <article className="nav">
       <section className="nav__section nav__logo">
-        logo
+        <b>Project:</b>Pantry
       </section>
       <section className="nav__section nav__links">
         <ul className="nav__list">
