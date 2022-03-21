@@ -1,10 +1,11 @@
 .banner__container {
     width: 100%;
-    background-color: #f2b770;
+    background-color: #fad7ad;
     padding-left: 7rem;
     padding-right: 7rem;
     display: flex;
     flex-wrap: wrap;
+    margin-bottom: 1rem;
   }
   
   .banner__header {
@@ -12,12 +13,84 @@
     justify-content: center;
     align-items: center;
     flex: 1;
+    width: 20%;
   }
   
   .banner__carousel {
+    border-radius: 5px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex: 3;
-    background-color: #FAE7D0;
+    /* background-color: #fae7d081; */
+    padding: 1rem;
+    max-width: 70%;
+    margin: .5rem 0;
+  }
+
+  .banner__carousel button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 3px #f2b770 solid;
+    border-radius: 16px;
+    background-color: #ffffff5d;
+    color: #f2b770;
+    min-width: 1.5rem;
+    height: 1.5rem;
+    font-weight: bolder;
+  }
+
+  .banner__wrapper {
+      flex: 1;
+      max-width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+  }
+
+  .banner__card {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      margin: 1rem;
+      padding: 1rem;
+      width: 11rem;
+      min-height: 7rem;
+      background-color: #ffffff;
+      border-radius: 5px;
+      color: #f2b770;
+      font-size: .86rem;
+      box-shadow: 0px 0px 5px 2px rgba(91, 99, 102, 0.098);
+      text-align: center;
+  }
+
+  .banner__card:hover {
+    animation: wiggle .5s 1;
+  }
+
+  .banner__card__text {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  @-webkit-keyframes wiggle {
+    0% {-webkit-transform: rotate(.7deg);}
+    50% {-webkit-transform: rotate(-.7deg);}
+    100% {-webkit-transform: rotate(0deg);}
+  }
+  
+  @-ms-keyframes wiggle {
+    0% {-ms-transform: rotate(.7deg);}
+    50% {-ms-transform: rotate(-.7deg);}
+    100% {-ms-transform: rotate(0deg);}
+  }
+  
+  @keyframes wiggle {
+    0% {transform: rotate(.7deg);}
+    50% {transform: rotate(-.7deg);}
+    100% {transform: rotate(0deg);}
   }
