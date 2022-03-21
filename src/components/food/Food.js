@@ -1,4 +1,5 @@
 import Form from "react-bootstrap/Form";
+import Multiselect from 'multiselect-react-dropdown';
 
 export const FoodForm = (props) => {
 
@@ -35,7 +36,7 @@ export const FoodForm = (props) => {
             defaultValue={props.locationValue}
             onChange={props.onChange}
           >
-            {props.foodId ? <></> : <option value="0">Select Storage Location</option> }
+            {props.foodId ? <></> : <option value="0">Select Storage Location</option>}
             {props.locations.map((l) => (
               <option value={l.id} key={l.id}>
                 {l.title}
@@ -56,7 +57,7 @@ export const FoodForm = (props) => {
             defaultValue={props.quantityValue}
             onChange={props.onChange}
           >
-            {props.foodId ? <></> : <option value="0">Select Quantity</option> }
+            {props.foodId ? <></> : <option value="0">Select Quantity</option>}
             {props.quantities.map((q) => (
               <option value={q.id} key={q.id}>
                 {q.title}
@@ -69,23 +70,31 @@ export const FoodForm = (props) => {
             className="form__label">
             Tags
           </Form.Label>
-          <select
-            aria-label="Default select example"
+          {/* <Multiselect
             name="tagId"
-            required
             className="form__select"
-            // defaultValue={props.tagsValue}
+            displayValue="label"
+            value={props.tagValue}
             onChange={props.tagsOnChange}
+            options={props.tags}
+            // ref={props.ref}
+          /> */}
+
+           <select 
             multiple={true}
-            value={props.tagsValue}
+            name="tagId"
+            className="form__select form-padding"
+            value={props.tagValue}
+            onChange={props.tagsOnChange}
+            options={props.tags}
           >
-            <option value="0">Select a Tag</option>
             {props.tags.map((t) => (
               <option value={t.id} key={t.id}>
                 {t.label}
               </option>
             ))}
           </select>
+
         </Form.Group>
       </Form>
       <section className="form__btn__container">

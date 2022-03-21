@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState, useEffect, useRef } from "react";
 import { useHistory } from "react-router-dom";
 import { FoodContext } from "./FoodProvider";
 import { FoodForm } from "./Food";
@@ -29,17 +29,20 @@ export const FoodCreateForm = (props) => {
     setCurrentFood(newFoodState)
   }
 
+  /* ---- MULTIPLE SELECT: WORKING ----- */
   const changeTagState = (evt) => {
+
     const newTagState = { ...currentFood }
-    const selectedOptions = Array.from(evt.target.options)
-      .filter(option => option.selected)
-      .map(option => option.value)
 
-    newTagState.tags = selectedOptions
+    newTagState[evt.target.name] = Array.from(evt.target.options)
+      .filter(o => o.selected)
+      .map(o => o.value)
+
+      console.log(newTagState)
+
     setCurrentFood(newTagState)
-
-    console.log(selectedOptions)
   }
+   /* ---- END MULTIPLE SELECT: WORKING ----- */
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -48,7 +51,7 @@ export const FoodCreateForm = (props) => {
       name: currentFood.name,
       locationId: parseInt(currentFood.locationId),
       quantityId: parseInt(currentFood.quantityId),
-      tags: currentFood.tags
+      tags: currentFood.tagId
     };
 
     createFood(food)
@@ -73,8 +76,8 @@ export const FoodCreateForm = (props) => {
       quantities={quantities}
       quantityValue={currentFood.quantityId}
       tags={tags}
-      tagsValue={currentFood.tags}
       tagsOnChange={changeTagState}
+      tagValue={currentFood.tags.tagId}
     />
   )
 }
