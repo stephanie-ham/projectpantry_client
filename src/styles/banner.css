@@ -1,0 +1,23 @@
+.banner__container {
+    width: 100%;
+    background-color: #f2b770;
+    padding-left: 7rem;
+    padding-right: 7rem;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .banner__header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+  }
+  
+  .banner__carousel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 3;
+    background-color: #FAE7D0;
+  }
