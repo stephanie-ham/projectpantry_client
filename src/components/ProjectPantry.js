@@ -5,6 +5,8 @@ import { NavBar } from "./nav/NavBar"
 import { Login } from "./auth/Login"
 import { Register } from "./auth/Register"
 import "./ProjectPantry.css"
+import { SafeFoodBanner } from "./safefood/SafeFoodBanner"
+import { SafeFoodProvider } from "./safefood/SafeFoodProvider"
 
 export const ProjectPantry = () => (
   <>
@@ -13,6 +15,13 @@ export const ProjectPantry = () => (
         return <>
           <Route>
             <NavBar />
+          </ Route>
+          <SafeFoodProvider>
+            <Route>
+              <SafeFoodBanner />
+            </Route>
+          </SafeFoodProvider>
+          <Route>
             <ApplicationViews />
           </Route>
         </>
