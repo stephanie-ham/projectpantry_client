@@ -173,6 +173,13 @@
 	font-weight: 300;
 }
 
+#bootstrap-overrides .tag_badge {
+	background-color: #AB79AF;
+	padding: 3px 10px;
+	font-size: 12px;
+	font-weight: 300;
+}
+
 #custom-switch:checked {
 	background-color: #AB79AF;
 	border: #f2b770;

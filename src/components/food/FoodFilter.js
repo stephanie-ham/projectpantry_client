@@ -42,7 +42,7 @@ export const FoodFilter = (props) => {
 
   return (
     <>
-      <section className="filters">
+      <section className="filter__container">
         <DropdownButton as={ButtonGroup} title="Filter by Quantity" className="btn-filter" id="bg-nested-dropdown">
           <Dropdown.Item 
             eventKey="1" 

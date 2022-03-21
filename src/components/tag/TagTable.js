@@ -23,8 +23,9 @@ export const TagTable = (props) => {
   return (
     <>
       <section className="body__container__tag taglist__container">
-        <Table className="tag__table">
-          <thead>
+      <div className="table__container tag__table">
+        <Table className="food__table">
+          <thead className="table__header">
             <tr>
               <th className="table__cell">Label</th>
               {/* <th className="table__cell">Count</th> */}
@@ -37,7 +38,7 @@ export const TagTable = (props) => {
                   <td className="table__cell tag">
                     <Badge
                       pill
-                      className="pp_badge"
+                      className=" tag_badge"
                       bg="override">
                       {tag.label}
                     </Badge>{' '}
@@ -45,11 +46,11 @@ export const TagTable = (props) => {
                   {/* <td className="table__cell counter">XX</td> */}
                   <div className="table__buttons right__align">
                     <button
-                      className="table__button" 
+                      className="table__button edit" 
                       tagId={tag.id}
                       onClick={() => history.push(`/tags/${tag.id}/edit`)}
                       >
-                      <img src={EditBtn} />
+                      <img src={EditBtn} /> Edit
                     </button>
                     <button
                       className="table__button"
@@ -63,6 +64,7 @@ export const TagTable = (props) => {
             })}
           </tbody>
         </Table>
+        </div>
       </section>
     </>
   )

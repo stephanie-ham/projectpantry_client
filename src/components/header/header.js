@@ -17,7 +17,7 @@ export const Header = (props) => {
 
   return (
     <section className="header__container">
-      <h2 className="header__text">{props.header}</h2>
+      <h1 className="header__text">{props.header}</h1>
       {props.param ? props.form : createButton()}
     </section>
   )

@@ -5,6 +5,7 @@ import { FoodProvider } from "./food/FoodProvider.js"
 import { FoodList } from "./food/FoodList.js"
 import { TagProvider } from "./tag/TagProvider.js"
 import { TagList } from "./tag/TagList.js"
+import { SafeFoodList } from "./safefood/SafeFoodList.js"
 
 
 export const ApplicationViews = () => {
@@ -20,6 +21,9 @@ export const ApplicationViews = () => {
           </Route>
           <Route exact path="/foods/:foodId(\d+)/edit">
             <FoodList form={true} />
+          </Route>
+          <Route exact path="/safe-foods">
+            <SafeFoodList />
           </Route>
           <Route exact path="/tags">
             <TagList />

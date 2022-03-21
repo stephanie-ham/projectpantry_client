@@ -1,14 +1,18 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { TagContext } from "./TagProvider";
 import Form from "react-bootstrap/Form";
 
 export const TagForm = (props) => {
   const history = useHistory();
-  const { createTag, editTag } = useContext(TagContext);
+  const { createTag, editTag, tags, getTags } = useContext(TagContext);
   const { tagId } = useParams();
 
   const [currentTag, setCurrentTag] = useState({});
+
+  useEffect(() => {
+    getTags();
+  }, []);
 
   const changeTagState = (evt) => {
     const newTagState = { ...currentTag }
@@ -17,6 +21,18 @@ export const TagForm = (props) => {
 
     setCurrentTag(newTagState)
   };
+
+  const findTag = (tagId) => {
+    let foundTag
+    tags.map(tag => {
+      if (tag.id === parseInt(tagId)) {
+        foundTag = tag
+      }
+    })
+    return foundTag
+  }
+
+  const foundTag = findTag(tagId)
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -51,7 +67,7 @@ export const TagForm = (props) => {
             Tag Label
           </Form.Label>
           <Form.Control
-            placeholder={tagId ? "Update Tag Label" : "Enter Tag Label"}
+            placeholder={tagId ? `Update: ${foundTag.label}` : "Enter Tag Label"}
             type="text"
             name="label"
             required

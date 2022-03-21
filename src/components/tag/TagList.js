@@ -17,18 +17,13 @@ export const TagList = (props) => {
   return (
     <>
       <Header
-        header={'Tags'}
+        header={<b>Tags</b>}
         path={() => history.push(`/tags/new`)}
         button={'Create Tag'}
-        form={
-        <TagForm />
-      
-        }
+        form={ <TagForm />}
         param={props.form}
       />
-
         {!tagId ? <TagTable /> : false}
-
     </>
   )
 }
