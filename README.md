@@ -1,68 +1,50 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Project: Pantry 🥕
 
-## Available Scripts
+A lot of people with ADHD (and other executive functioning disorders) struggle when it comes to making meals. Things like disorganization, impulsivity, sensory struggles, lack or overload of stimulation, decision fatigue and the dreaded “out of sight, out of mind” can make a maintained kitchen and food routine really challenging. **Project: Pantry** aims to provide structure via food inventory and easy-to-access safe foods to remove some of the barriers someone may face when grocery shopping and choosing a meal. 
 
-In the project directory, you can run:
+**Project: Pantry**, built with React.js and Python/Django, allows users to create an inventory of all foods in their kitchen. No more forgetting an ingredient or buying duplicates of things that were hidden on the back of the shelf. A location can be added so users never forget where a food is stored, and predefined quantity levels allow users to easily keep track of quantity without distracting, detailed measurements. Custom tags allow users to organize their foods in a way that suits them best. Foods can also be marked as safe foods. These foods will be displayed at the top of every page to ensure easy access for days when a user is trying to beat an impulsive delivery order or struggling to cook and/or eat. 
 
-### `npm start`
+## Installation and Setup Instructions for Client
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Clone down this repository. You will need `node`and `npm` installed \
+globally on your machine.  
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Installation:
 
-### `npm test`
+`npm install`  
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+To Run Test Suite:  
 
-### `npm build`
+`npm test`  
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+To Start Client:
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+`npm start`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+To Visit App:
 
-### `npm eject`
+`localhost:3000/login`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Login Credentials: 
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+`username: steph`\
+`password: steph`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Installation and Setup Instructions for Server
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Clone down the `projectpantry_api` repository, found here: \
+https://github.com/hamiltons621/projectpantry_api. 
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## ERD
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+![Screen Shot 2022-03-24 at 11 46 42 AM](https://user-images.githubusercontent.com/81783826/159977528-88560749-6944-4ee8-8818-cb553a96077c.png)
 
-### Code Splitting
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
 
-### Analyzing the Bundle Size
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+## Wireframe
 
-### Making a Progressive Web App
+[Project: Pantry Wireframe](https://stephaniehamilton495356.invisionapp.com/freehand/Final-Capstone-7ruL0Nkbf?dsid_h=1e47ca13f8099abea3340c1f0a141f86791aeb6065c152c64ec3b1aa1a9b8718&uid_h=9aa87ce56e26718c778fe14fdd2dd7285d7831b075c9a5a4141b717fc9011788)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
 
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
