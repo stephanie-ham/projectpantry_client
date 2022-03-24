@@ -41,8 +41,6 @@ https://github.com/hamiltons621/projectpantry_api.
 ![Screen Shot 2022-03-24 at 11 46 42 AM](https://user-images.githubusercontent.com/81783826/159977528-88560749-6944-4ee8-8818-cb553a96077c.png)
 
 
-
-
 ## Wireframe
 
 [Project: Pantry Wireframe](https://stephaniehamilton495356.invisionapp.com/freehand/Final-Capstone-7ruL0Nkbf?dsid_h=1e47ca13f8099abea3340c1f0a141f86791aeb6065c152c64ec3b1aa1a9b8718&uid_h=9aa87ce56e26718c778fe14fdd2dd7285d7831b075c9a5a4141b717fc9011788)
