@@ -47,7 +47,7 @@ Login Credentials:
 ## Installation and Setup Instructions for Server
 
 Clone down the `projectpantry_api` repository, found here: \
-https://github.com/hamiltons621/projectpantry_api. 
+https://github.com/stephanie-ham/projectpantry_api. 
 
 Instructions coming soon!
 
